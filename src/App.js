@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTodos, addTodo, deleteTodo } from './actions/todoActions';
+import { getTodos, addTodos, delTodos } from './actions/todoActions';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -16,7 +16,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      dispatch(addTodo({ title }));
+      dispatch(addTodos({ title }));
       setTitle('');
     }
   };
@@ -35,7 +35,7 @@ function App() {
       <ul>
         {todos.map(todo => (
           <li key={todo._id}>
-            {todo.title} <button onClick={() => dispatch(deleteTodo(todo._id))}>Delete</button>
+            {todo.title} <button onClick={() => dispatch(delTodos(todo._id))}>Delete</button>
           </li>
         ))}
       </ul>
