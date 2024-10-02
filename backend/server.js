@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const todoRoutes = require('./routes/todoRoutes');
 
+//Middleware
 dotenv.config();
 const app = express();
 app.use(cors());
