@@ -7,7 +7,7 @@ import store from './store';
 function App() {
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.todos.todos);
+  const todos = useSelector(state => state.todos?.todos || []); // Fallback to an empty array if undefined
 
   useEffect(() => {
     dispatch(getTodos());
@@ -43,8 +43,18 @@ function App() {
   );
 }
 
-export default () => (
+// export default () => (
+//   <Provider store={store}>
+//     <App />
+//   </Provider>
+// );
+
+// Assign the anonymous function to a variable
+const TodoApp = () => (
   <Provider store={store}>
     <App />
   </Provider>
 );
+
+// Export the named variable
+export default TodoApp;
